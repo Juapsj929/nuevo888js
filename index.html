@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Envíos nacionales rápidos, seguros y rastreables. Cotiza y rastrea tus paquetes en segundos." />
+  <title>Envíos Nacionales | Rápido y Seguro</title>
+  <style>
+    /* ==== ESTILOS GENERALES ==== */
+    :root {
+      --color-primario: #004aad;
+      --color-secundario: #00b4d8;
+      --color-fondo: #f4f6f9;
+      --color-texto: #333;
+      --radius: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: var(--color-fondo);
+      color: var(--color-texto);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+      color: white;
+      text-align: center;
+      padding: 2.5rem 1rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      padding: 1rem;
+      color: var(--color-primario);
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: var(--color-secundario);
+      color: white;
+    }
+
+    section {
+      padding: 3rem 1.5rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    section h2 {
+      color: var(--color-primario);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: 2rem;
+    }
+
+    /* ==== SECCIÓN RASTREO ==== */
+    #rastreo {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    #rastreo input {
+      padding: 0.8rem;
+      width: 70%;
+      max-width: 400px;
+      border: 2px solid var(--color-primario);
+      border-radius: var(--radius);
+      outline: none;
+      margin-right: 10px;
+    }
+
+    #rastreo button {
+      padding: 0.8rem 1.5rem;
+      background: var(--color-primario);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #rastreo button:hover {
+      background: var(--color-secundario);
+    }
+
+    #resultado-rastreo {
+      margin-top: 1.5rem;
+      color: var(--color-texto);
+      font-size: 1.1rem;
+    }
+
+    /* ==== SECCIÓN SERVICIOS ==== */
+    .servicios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .servicio {
+      background: white;
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .servicio:hover {
+      transform: translateY(-5px);
+    }
+
+    .servicio h3 {
+      color: var(--color-primario);
+      margin-bottom: 0.8rem;
+    }
+
+    /* ==== SECCIÓN COTIZAR ==== */
+    #cotizar form {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: auto;
+    }
+
+    form input, form select {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.6rem 0;
+      border: 1px solid #ccc;
+      border-radius: var(--radius);
+    }
+
+    form button {
+      width: 100%;
+      background: var(--color-primario);
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    form button:hover {
+      background: var(--color-secundario);
+    }
+
+    /* ==== FOOTER ==== */
+    footer {
+      background: var(--color-primario);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Envíos Nacionales Express</h1>
+    <p>Rápido, seguro y siempre a tiempo</p>
+  </header>
+
+  <nav>
+    <a href="#rastreo">Rastrear Guía</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#cotizar">Cotizar Envío</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <section id="rastreo">
+    <h2>Rastrea tu envío</h2>
+    <p>Ingresa tu número de guía para conocer el estado actual de tu paquete.</p>
+    <input type="text" id="guia" placeholder="Ejemplo: MX123456789" />
+    <button onclick="rastrearGuia()">Rastrear</button>
+    <div id="resultado-rastreo"></div>
+  </section>
+
+  <section id="servicios">
+    <h2>Nuestros Servicios</h2>
+    <div class="servicios">
+      <div class="servicio">
+        <h3>Envíos Nacionales</h3>
+        <p>Entrega en todo el país con opciones de servicio express o estándar.</p>
+      </div>
+      <div class="servicio">
+        <h3>Recolección a Domicilio</h3>
+        <p>Solicita que recojamos tu paquete en la puerta de tu casa o negocio.</p>
+      </div>
+      <div class="servicio">
+        <h3>Entrega Segura</h3>
+        <p>Seguimiento en tiempo real y confirmación de entrega garantizada.</p>
+      </div>
+      <div class="servicio">
+        <h3>Empaque Profesional</h3>
+        <p>Protegemos tus productos para que lleguen en perfecto estado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cotizar">
+    <h2>Cotiza tu Envío</h2>
+    <form onsubmit="calcularCosto(event)">
+      <label>Origen:</label>
+      <input type="text" id="origen" placeholder="Ciudad de origen" required />
+
+      <label>Destino:</label>
+      <input type="text" id="destino" placeholder="Ciudad de destino" required />
+
+      <label>Peso (kg):</label>
+      <input type="number" id="peso" placeholder="Ejemplo: 2.5" step="0.1" required />
+
+      <button type="submit">Calcular Costo</button>
+    </form>
+    <p id="resultado-cotizacion" style="text-align:center; margin-top:1rem;"></p>
+  </section>
+
+  <section id="contacto">
+    <h2>Contáctanos</h2>
+    <p style="text-align:center;">📞 800-123-ENVIO | ✉️ contacto@enviosnacionales.mx</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Envíos Nacionales Express. Todos los derechos reservados.</p>
+    <p>Hecho con 🚚 y ❤️ en México.</p>
+  </footer>
+
+  <script>
+    function rastrearGuia() {
+      const guia = document.getElementById("guia").value.trim();
+      const resultado = document.getElementById("resultado-rastreo");
+
+      if (!guia) {
+        resultado.textContent = "Por favor ingresa un número de guía.";
+        resultado.style.color = "red";
+        return;
+      }
+
+      // Simulación del rastreo
+      resultado.style.color = "#333";
+      resultado.innerHTML = `<strong>Guía ${guia}</strong>: En tránsito 🚚 | Última ubicación: Guadalajara, JAL.`;
+    }
+
+    function calcularCosto(event) {
+      event.preventDefault();
+      const peso = parseFloat(document.getElementById("peso").value);
+      const resultado = document.getElementById("resultado-cotizacion");
+
+      if (isNaN(peso) || peso <= 0) {
+        resultado.textContent = "Por favor ingresa un peso válido.";
+        resultado.style.color = "red";
+        return;
+      }
+
+      // Cálculo simple simulado
+      const costo = (peso * 45 + 60).toFixed(2);
+      resultado.style.color = "#004aad";
+      resultado.textContent = `El costo estimado de tu envío es de $${costo} MXN.`;
+    }
+  </script>
+</body>
+</html>
